@@ -239,5 +239,5 @@ private boolean isEqual(ListNode l1, ListNode l2) {
 - [ ] [No.0148(sort-list)](https://leetcode-cn.com/problems/sort-list/)
 - [ ] [No.0206(reverse-linked-list)](https://leetcode-cn.com/problems/reverse-linked-list/)
 - [ ] [No.0234(palindrome-linked-list)](https://leetcode-cn.com/problems/palindrome-linked-list/)
-- [ ] [No.237(delete-node-in-a-linked-list)](https://leetcode-cn.com/problems/delete-node-in-a-linked-list/)
+- [ ] [No.0237(delete-node-in-a-linked-list)](https://leetcode-cn.com/problems/delete-node-in-a-linked-list/)
 - [ ] [No.0876(middle-of-the-linked-list)](https://leetcode-cn.com/problems/middle-of-the-linked-list/solution/)
