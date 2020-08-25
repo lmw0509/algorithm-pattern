@@ -43,63 +43,6 @@ class Solution {
 
 ## 常见题目
 
-[binary-search](https://leetcode-cn.com/problems/binary-search/)
-
-> 给定一个  n  个元素有序的（升序）整型数组  nums 和一个目标值  target  ，写一个函数搜索  nums  中的 target，如果目标值存在返回下标，否则返回 -1。
-
-### [find-first-and-last-position-of-element-in-sorted-array](https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/)
-
-> 给定一个包含 n 个整数的排序数组，找出给定目标值 target 的起始和结束位置。
-> 如果目标值不在数组中，则返回`[-1, -1]`
-
-思路：用二分查找，找到第一次出现target的位置，然后往下遍历找到第二次出现target的位置
-
-```java
-class Solution {
-    public int[] searchRange(int[] nums, int target) {
-        int[] ans = new int[]{-1, -1};
-        if (nums.length == 0 || nums[0] > target) {
-            return ans;
-        }
-        int low = 0, high = nums.length - 1;
-        // 用二分查找，找到第一次出现target的位置
-        while (low <= high) {
-            int mid = low + ((high - low) >> 1);
-            if (nums[mid] >= target) {
-                if (mid == 0 || (nums[mid] == target && nums[mid - 1] < target)) {
-                    ans[0] = mid;
-                    break;
-                }
-                else {
-                    high = mid - 1;
-                } 
-            }
-            else {
-                low = mid + 1;
-            }
-        }
-        if (ans[0] != -1 && nums[ans[0]] == target) {
-            if (ans[0] == nums.length - 1) {
-                ans[1] = ans[0];
-            }
-            else {
-                // 往下遍历找到第二次出现target 的位置
-                for (int i = ans[0] + 1; i < nums.length; ++i) {
-                    if (nums[i] != target) {
-                        ans[1] = i - 1;
-                        break;
-                    }
-                    if (i == nums.length - 1 && nums[i] == target) {
-                        ans[1] = i;
-                    }
-                }
-            }
-        }
-        return ans;
-    }
-}
-```
-
 ### [search-insert-position](https://leetcode-cn.com/problems/search-insert-position/)
 
 > 给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。
@@ -333,10 +276,10 @@ class Solution {
 
 ## 练习题
 
-- [ ] [binary-search](https://leetcode-cn.com/problems/binary-search/)
-- [ ] [find-first-and-last-position-of-element-in-sorted-array](https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/)
+- [ ] [(0704)binary-search](https://leetcode-cn.com/problems/binary-search/)
+- [ ] [(0034)find-first-and-last-position-of-element-in-sorted-array](https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/)
 - [ ] [search-for-range](https://www.lintcode.com/problem/search-for-a-range/description)
-- [ ] [search-insert-position](https://leetcode-cn.com/problems/search-insert-position/)
+- [ ] [(0035)search-insert-position](https://leetcode-cn.com/problems/search-insert-position/)
 - [ ] [search-a-2d-matrix](https://leetcode-cn.com/problems/search-a-2d-matrix/)
 - [ ] [first-bad-version](https://leetcode-cn.com/problems/first-bad-version/)
 - [ ] [find-minimum-in-rotated-sorted-array](https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/)
