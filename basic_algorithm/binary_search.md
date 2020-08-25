@@ -1,6 +1,4 @@
-# 二分搜索
-
-## 二分搜索模板
+## 核心知识
 
 给一个**有序数组**和目标值，找第一次/最后一次/任何一次出现的索引，如果没有出现返回-1
 
@@ -11,51 +9,17 @@
 - 3、比较中点和目标值：A[mid] ==、 <、> target
 - 4、判断最后两个元素是否符合：A[start]、A[end] ? target
 
-时间复杂度 O(logn)，使用场景一般是有序数组的查找
+时间复杂度 O(logn)，使用场景一般是有序数组的查找。
 
-典型示例
+## 解题模板
 
-[binary-search](https://leetcode-cn.com/problems/binary-search/)
-
-> 给定一个  n  个元素有序的（升序）整型数组  nums 和一个目标值  target  ，写一个函数搜索  nums  中的 target，如果目标值存在返回下标，否则返回 -1。
-
-```java
-// 二分搜索最常用模板
-class Solution {
-    public int search(int[] nums, int target) {
-        int mid, left = 0, right = nums.length - 1;
-        // 处理for循环
-        while (left + 1 < right) {
-            mid = left + (right - left) / 2;
-            if (nums[mid] == target) {
-                return mid;
-            } else if (nums[mid] < target) {
-                left = mid + 1;
-            } else {
-                right = mid - 1;
-            }
-        }
-        // 最后剩下两个元素，手动判断
-        if (nums[left] == target) {
-            return left;
-        }
-        if (nums[right] == target) {
-            return right;
-        }
-        return -1;
-    }
-}
-```
-
-大部分二分查找类的题目都可以用这个模板，然后做一点特殊逻辑即可
-
-另外二分查找还有一些其他模板如下图，大部分场景模板#3 都能解决问题，而且还能找第一次/最后一次出现的位置，应用更加广泛
+二分查找模板如下图，大部分场景模板#3 都能解决问题，而且还能找第一次/最后一次出现的位置，应用更加广泛。
 
 ![](http://wardseptember.club/FlGGP91_r4M9cFmcxDLxRLEEuaCE)
 
-所以用模板#3 就对了，详细的对比可以这边文章介绍：[二分搜索模板](https://leetcode-cn.com/explore/learn/card/binary-search/212/template-analysis/847/)
+99% 的二分查找问题会归结于这 3 个模板中的一个。详细的对比可以这边文章介绍：[二分搜索模板](https://leetcode-cn.com/explore/learn/card/binary-search/212/template-analysis/847/)
 
-如果是最简单的二分搜索，不需要找第一个、最后一个位置、或者是没有重复元素，可以使用模板#1，代码更简洁
+如果是最简单的二分搜索，不需要找第一个、最后一个位置、或者是没有重复元素，可以使用模板#1，代码更简洁。
 
 ```java
 // 无重复元素搜索时，更方便
@@ -78,6 +42,10 @@ class Solution {
 ```
 
 ## 常见题目
+
+[binary-search](https://leetcode-cn.com/problems/binary-search/)
+
+> 给定一个  n  个元素有序的（升序）整型数组  nums 和一个目标值  target  ，写一个函数搜索  nums  中的 target，如果目标值存在返回下标，否则返回 -1。
 
 ### [find-first-and-last-position-of-element-in-sorted-array](https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/)
 
@@ -363,17 +331,10 @@ class Solution {
 }
 ```
 
-## 总结
-
-二分搜索核心四点要素（必背&理解）
-
-- 1、初始化：start=0、end=len-1
-- 2、循环退出条件：start + 1 < end
-- 3、比较中点和目标值：A[mid] ==、 <、> target
-- 4、判断最后两个元素是否符合：A[start]、A[end] ? target
-
 ## 练习题
 
+- [ ] [binary-search](https://leetcode-cn.com/problems/binary-search/)
+- [ ] [find-first-and-last-position-of-element-in-sorted-array](https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/)
 - [ ] [search-for-range](https://www.lintcode.com/problem/search-for-a-range/description)
 - [ ] [search-insert-position](https://leetcode-cn.com/problems/search-insert-position/)
 - [ ] [search-a-2d-matrix](https://leetcode-cn.com/problems/search-a-2d-matrix/)
