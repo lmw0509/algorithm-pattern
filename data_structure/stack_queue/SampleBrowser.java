@@ -1,30 +1,9 @@
-package algo.lesson08;
+package stack_queue;
 
 /**
  * 使用前后栈实现浏览器的前进后退。
- * 
- * @author chinalwb
  */
 public class SampleBrowser {
-
-    public static void main(String[] args) {
-        SampleBrowser browser = new SampleBrowser();
-        browser.open("http://www.baidu.com");
-        browser.open("http://news.baidu.com/");
-        browser.open("http://news.baidu.com/ent");
-        browser.goBack();
-        browser.goBack();
-        browser.goForward();
-        browser.open("http://www.qq.com");
-        browser.goForward();
-        browser.goBack();
-        browser.goForward();
-        browser.goBack();
-        browser.goBack();
-        browser.goBack();
-        browser.goBack();
-        browser.checkCurrentPage();
-    }
 
     private String currentPage;
     private LinkedListBasedStack backStack;
@@ -58,7 +37,6 @@ public class SampleBrowser {
             showUrl(backUrl, "Back");
             return backUrl;
         }
-
         System.out.println("* Cannot go back, no pages behind.");
         return null;
     }
@@ -89,22 +67,6 @@ public class SampleBrowser {
      */
     public static class LinkedListBasedStack {
 
-//        public static void main(String[] args) {
-//            LinkedListBasedStack stack = new LinkedListBasedStack();
-//            stack.push("A");
-//            stack.push("B");
-//            stack.push("C");
-//            stack.pop();
-//            stack.push("D");
-//            stack.push("E");
-//            stack.pop();
-//            stack.push("F");
-//            stack.print();
-//
-////        String data = stack.getTopData();
-////        System.out.println("Top data == " + data);
-//        }
-
         private int size;
         private Node top;
 
@@ -118,8 +80,7 @@ public class SampleBrowser {
         }
 
         public void push(String data) {
-            Node node = createNode(data, this.top);
-            this.top = node;
+            this.top = createNode(data, this.top);
             this.size++;
         }
 
@@ -189,5 +150,40 @@ public class SampleBrowser {
             }
         }
 
+        public static void main(String[] args) {
+            LinkedListBasedStack stack = new LinkedListBasedStack();
+            stack.push("A");
+            stack.push("B");
+            stack.push("C");
+            stack.pop();
+            stack.push("D");
+            stack.push("E");
+            stack.pop();
+            stack.push("F");
+            stack.print();
+
+            String data = stack.getTopData();
+            System.out.println("Top data == " + data);
+        }
+
+    }
+
+    public static void main(String[] args) {
+        SampleBrowser browser = new SampleBrowser();
+        browser.open("http://www.baidu.com");
+        browser.open("http://news.baidu.com/");
+        browser.open("http://news.baidu.com/ent");
+        browser.goBack();
+        browser.goBack();
+        browser.goForward();
+        browser.open("http://www.qq.com");
+        browser.goForward();
+        browser.goBack();
+        browser.goForward();
+        browser.goBack();
+        browser.goBack();
+        browser.goBack();
+        browser.goBack();
+        browser.checkCurrentPage();
     }
 }
