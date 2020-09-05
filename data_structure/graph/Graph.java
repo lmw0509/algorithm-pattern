@@ -1,15 +1,13 @@
-package com.study.graph;
+package graph;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
-/**
- * @author ldb
- * @date 2019-10-23 15:10
- */
 public class Graph {
     private int v;
-    private LinkedList<Integer> adj[]; // 邻接表
+
+    // 邻接表
+    private LinkedList<Integer> adj[];
 
     public Graph(int v) {
         this.v = v;
@@ -25,14 +23,17 @@ public class Graph {
      * @param s 顶点
      * @param t 顶点
      */
-    public void addEdge(int s, int t) { // 无向图一条边存两次
+    public void addEdge(int s, int t) {
+        // 无向图一条边存两次
         adj[s].add(t);
         adj[t].add(s);
 
     }
 
     public void bfs(int s, int t) {
-        if (s == t) return;
+        if (s == t) {
+            return;
+        }
         // visited是用来记录已经被访问的顶点，用来避免顶点被重复访问。
         boolean[] visited = new boolean[v];
         visited[s] = true;
@@ -61,7 +62,8 @@ public class Graph {
         }
     }
 
-    private void print(int[] prev, int s, int t) { // 递归打印 s->t 的路径
+    // 递归打印 s->t 的路径
+    private void print(int[] prev, int s, int t) {
         if (prev[t] != -1 && t != s) {
             print(prev, s, prev[t]);
         }
@@ -70,23 +72,24 @@ public class Graph {
 
     public static void main(String[] args) {
         Graph graph = new Graph(8);
-        graph.addEdge(0,1);
-        graph.addEdge(0,3);
-        graph.addEdge(1,2);
-        graph.addEdge(1,4);
-        graph.addEdge(2,5);
-        graph.addEdge(4,5);
-        graph.addEdge(4,6);
-        graph.addEdge(5,7);
-        graph.addEdge(6,7);
-//        graph.bfs(0,6);
+        graph.addEdge(0, 1);
+        graph.addEdge(0, 3);
+        graph.addEdge(1, 2);
+        graph.addEdge(1, 4);
+        graph.addEdge(2, 5);
+        graph.addEdge(4, 5);
+        graph.addEdge(4, 6);
+        graph.addEdge(5, 7);
+        graph.addEdge(6, 7);
+        //graph.bfs(0,6);
 
         // 深度优先
         graph.dfs(0, 6);
 
     }
 
-    boolean found = false; // 全局变量或者类成员变量
+    // 全局变量或者类成员变量
+    boolean found = false;
 
     public void dfs(int s, int t) {
         found = false;
@@ -100,7 +103,9 @@ public class Graph {
     }
 
     private void recurDfs(int w, int t, boolean[] visited, int[] prev) {
-        if (found == true) return;
+        if (found) {
+            return;
+        }
         visited[w] = true;
         if (w == t) {
             found = true;
