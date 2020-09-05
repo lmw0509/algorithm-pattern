@@ -1,9 +1,7 @@
+package hash;
+
 /**
- * @Description:散列表实现
- * @Author: Hoda
- * @Date: Create in 2019-08-07
- * @Modified By:
- * @Modified Date:
+ * 哈希表的实现
  */
 public class HashTable<K, V> {
 
@@ -36,34 +34,22 @@ public class HashTable<K, V> {
         table = (Entry<K, V>[]) new Entry[DEFAULT_INITAL_CAPACITY];
     }
 
-    static class Entry<K, V> {
-        K key;
-
-        V value;
-
-        Entry<K, V> next;
-
-        Entry(K key, V value, Entry<K, V> next) {
-            this.key = key;
-            this.value = value;
-            this.next = next;
-        }
-    }
-
     /**
-     * 新增
+     * 新增键值对
      *
-     * @param key
-     * @param value
+     * @param key 键
+     * @param value 值
      */
     public void put(K key, V value) {
         int index = hash(key);
+
         // 位置未被引用，创建哨兵节点
         if (table[index] == null) {
             table[index] = new Entry<>(null, null, null);
         }
 
         Entry<K, V> tmp = table[index];
+
         // 新增节点
         if (tmp.next == null) {
             tmp.next = new Entry<>(key, value, null);
@@ -74,6 +60,7 @@ public class HashTable<K, V> {
                 resize();
             }
         }
+
         // 解决散列冲突，使用链表法
         else {
             do {
@@ -92,12 +79,10 @@ public class HashTable<K, V> {
     }
 
     /**
-     * 散列函数
-     * <p>
-     * 参考hashmap散列函数
+     * 散列函数:参考hashmap散列函数
      *
-     * @param key
-     * @return
+     * @param key 键
+     * @return hash运算之后的索引
      */
     private int hash(Object key) {
         int h;
@@ -111,16 +96,17 @@ public class HashTable<K, V> {
         Entry<K, V>[] oldTable = table;
         table = (Entry<K, V>[]) new Entry[table.length * 2];
         use = 0;
-        for (int i = 0; i < oldTable.length; i++) {
-            if (oldTable[i] == null || oldTable[i].next == null) {
+        for (Entry<K, V> kvEntry : oldTable) {
+            if (kvEntry == null || kvEntry.next == null) {
                 continue;
             }
-            Entry<K, V> e = oldTable[i];
+            Entry<K, V> e = kvEntry;
             while (e.next != null) {
                 e = e.next;
                 int index = hash(e.key);
                 if (table[index] == null) {
                     use++;
+
                     // 创建哨兵节点
                     table[index] = new Entry<>(null, null, null);
                 }
@@ -130,9 +116,9 @@ public class HashTable<K, V> {
     }
 
     /**
-     * 删除
+     * 根据key删除键值对
      *
-     * @param key
+     * @param key 键
      */
     public void remove(K key) {
         int index = hash(key);
@@ -149,17 +135,18 @@ public class HashTable<K, V> {
             if (key == e.key) {
                 pre.next = e.next;
                 size--;
-                if (headNode.next == null) use--;
+                if (headNode.next == null)
+                    use--;
                 return;
             }
         } while (e.next != null);
     }
 
     /**
-     * 获取
+     * 根据键获取值
      *
-     * @param key
-     * @return
+     * @param key 键
+     * @return 值
      */
     public V get(K key) {
         int index = hash(key);
@@ -174,5 +161,19 @@ public class HashTable<K, V> {
             }
         }
         return null;
+    }
+
+    static class Entry<K, V> {
+        K key;
+
+        V value;
+
+        Entry<K, V> next;
+
+        Entry(K key, V value, Entry<K, V> next) {
+            this.key = key;
+            this.value = value;
+            this.next = next;
+        }
     }
 }
