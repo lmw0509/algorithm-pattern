@@ -1,12 +1,9 @@
-package com.study.skiplist;
+package skip_list;
 
 import java.util.Random;
 
 /**
- * 1，跳表的一种实现方法，用于练习。跳表中存储的是正整数，并且存储的是不重复的。
- * 2，本类是参考作者zheng ，自己学习，优化了添加方法
- * 3，看完这个，我觉得再看ConcurrentSkipListMap 源码，会有很大收获
- * Author：ldb
+ * 1，跳表的一种实现方法，用于练习。跳表中存储的是正整数，并且存储的是不重复的。 2，看完这个，再看ConcurrentSkipListMap 源码，会有很大收获
  */
 public class SkipList2 {
 
@@ -19,6 +16,7 @@ public class SkipList2 {
     private Node head = new Node(MAX_LEVEL);
     private Random r = new Random();
 
+    // 查找
     public Node find(int value) {
         Node p = head;
         // 从最大层开始查找，找到前一节点，通过--i，移动到下层再开始查找
@@ -36,11 +34,7 @@ public class SkipList2 {
         }
     }
 
-    /**
-     * 优化了作者zheng的插入方法
-     *
-     * @param value 值
-     */
+    // 插入
     public void insert(int value) {
         int level = head.forwards[0] == null ? 1 : randomLevel();
         // 每次只增加一层，如果条件满足
@@ -74,11 +68,7 @@ public class SkipList2 {
 
     }
 
-    /**
-     * 优化了作者zheng的插入方法2
-     *
-     * @param value 值
-     */
+    // 插入2
     public void insert2(int value) {
         int level = head.forwards[0] == null ? 1 : randomLevel();
         // 每次只增加一层，如果条件满足
@@ -104,17 +94,14 @@ public class SkipList2 {
                     newNode.forwards[i] = next;
                 }
             }
-
         }
-
     }
 
     /**
-     * 作者zheng的插入方法，未优化前，优化后参见上面insert()
+     * 插入
      *
-     * @param value
-     * @param level 0 表示随机层数，不为0，表示指定层数，指定层数
-     *              可以让每次打印结果不变动，这里是为了便于学习理解
+     * @param value 值
+     * @param level 0 表示随机层数，不为0，表示指定层数，指定层数 可以让每次打印结果不变动，这里是为了便于学习理解
      */
     public void insert(int value, int level) {
         // 随机一个层数
@@ -132,12 +119,8 @@ public class SkipList2 {
             update[i] = head;
         }
 
-        /**
-         *
-         * 1，说明：层是从下到上的，这里最下层编号是0，最上层编号是15
-         * 2，这里没有从已有数据最大层（编号最大）开始找，（而是随机层的最大层）导致有些问题。
-         *    如果数据量为1亿，随机level=1 ，那么插入时间复杂度为O（n）
-         */
+        // 1，说明：层是从下到上的，这里最下层编号是0，最上层编号是15
+        // 2，这里没有从已有数据最大层（编号最大）开始找，（而是随机层的最大层）导致有些问题。 如果数据量为1亿，随机level=1 ，那么插入时间复杂度为O（n）
         Node p = head;
         for (int i = level - 1; i >= 0; --i) {
             while (p.forwards[i] != null && p.forwards[i].data < value) {
@@ -156,9 +139,12 @@ public class SkipList2 {
         }
 
         // 更新层高
-        if (levelCount < level) levelCount = level;
+        if (levelCount < level) {
+            levelCount = level;
+        }
     }
 
+    // 删除
     public void delete(int value) {
         Node[] update = new Node[levelCount];
         Node p = head;
@@ -178,11 +164,7 @@ public class SkipList2 {
         }
     }
 
-    /**
-     * 随机 level 次，如果是奇数层数 +1，防止伪随机
-     *
-     * @return
-     */
+    // 随机 level 次，如果是奇数层数 +1，防止伪随机
     private int randomLevel() {
         int level = 1;
         for (int i = 1; i < MAX_LEVEL; ++i) {
@@ -228,8 +210,7 @@ public class SkipList2 {
     public class Node {
         private int data = -1;
         /**
-         * 表示当前节点位置的下一个节点所有层的数据，从上层切换到下层，就是数组下标-1，
-         * forwards[3]表示当前节点在第三层的下一个节点。
+         * 表示当前节点位置的下一个节点所有层的数据，从上层切换到下层，就是数组下标-1， forwards[3]表示当前节点在第三层的下一个节点。
          */
         private Node forwards[];
 
@@ -267,28 +248,16 @@ public class SkipList2 {
         list.printAll_beautiful();
         list.printAll();
         /**
-         * 结果如下：
-         * 									    null:15-------
-         * 									    null:14-------
-         * 									    null:13-------
-         * 									    null:12-------
-         * 									    null:11-------
-         * 									    null:10-------
-         * 										   5:9-------
-         * 										   5:8-------
-         * 										   5:7-------
-         * 										   5:6-------
-         * 										   5:5-------
-         * 										   5:4-------					 8:4-------
-         * 							     4:3-------5:3-------6:3-------7:3-------8:3-------
-         * 1:2-------2:2-------		     4:2-------5:2-------6:2-------7:2-------8:2-------
+         * 结果如下： null:15------- null:14------- null:13------- null:12------- null:11------- null:10------- 5:9-------
+         * 5:8------- 5:7------- 5:6------- 5:5------- 5:4------- 8:4-------
+         * 4:3-------5:3-------6:3-------7:3-------8:3------- 1:2-------2:2-------
+         * 4:2-------5:2-------6:2-------7:2-------8:2-------
          * 1:1-------2:1-------3:1-------4:1-------5:1-------6:1-------7:1-------8:1-------
-         * 1:0-------2:0-------3:0-------4:0-------5:0-------6:0-------7:0-------8:0-------
-         * { data: 1; levels: 3 } { data: 2; levels: 3 } { data: 3; levels: 2 } { data: 4; levels: 4 }
-         * { data: 5; levels: 10 } { data: 6; levels: 4 } { data: 7; levels: 4 } { data: 8; levels: 5 }
+         * 1:0-------2:0-------3:0-------4:0-------5:0-------6:0-------7:0-------8:0------- { data: 1; levels: 3 } {
+         * data: 2; levels: 3 } { data: 3; levels: 2 } { data: 4; levels: 4 } { data: 5; levels: 10 } { data: 6; levels:
+         * 4 } { data: 7; levels: 4 } { data: 8; levels: 5 }
          */
         // 优化后insert()
-
         SkipList2 list2 = new SkipList2();
         list2.insert2(1);
         list2.insert2(2);
@@ -300,7 +269,6 @@ public class SkipList2 {
         list2.insert2(5);
         System.out.println();
         list2.printAll_beautiful();
-
 
     }
 
