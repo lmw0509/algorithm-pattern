@@ -190,7 +190,7 @@ class Solution {
 
 ## 练习
 
-- [ ] [reverse-string](https://leetcode-cn.com/problems/reverse-string/)
-- [ ] [swap-nodes-in-pairs](https://leetcode-cn.com/problems/swap-nodes-in-pairs/)
-- [ ] [unique-binary-search-trees-ii](https://leetcode-cn.com/problems/unique-binary-search-trees-ii/)
-- [ ] [fibonacci-number](https://leetcode-cn.com/problems/fibonacci-number/)
+- [ ] [No.0344(reverse-string)](https://leetcode-cn.com/problems/reverse-string/)
+- [ ] [No.0024(swap-nodes-in-pairs)](https://leetcode-cn.com/problems/swap-nodes-in-pairs/)
+- [ ] [No.0095(unique-binary-search-trees-ii)](https://leetcode-cn.com/problems/unique-binary-search-trees-ii/)
+- [ ] [No.0509(fibonacci-number)](https://leetcode-cn.com/problems/fibonacci-number/)
