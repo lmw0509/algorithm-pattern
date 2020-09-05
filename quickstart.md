@@ -1,15 +1,14 @@
-# 快速开始
-
 ## 数据结构与算法
 
-数据结构是一种数据的表现形式，如链表、二叉树、栈、队列等都是内存中一段数据表现的形式。
-算法是一种通用的解决问题的模板或者思路，大部分数据结构都有一套通用的算法模板，所以掌握这些通用的算法模板即可解决各种算法问题。
+> 数据结构是一种数据的表现形式，如链表、二叉树、栈、队列等都是内存中一段数据表现的形式。
+>
+> 算法是一种通用的解决问题的模板或者思路，大部分数据结构都有一套通用的算法模板，所以掌握这些通用的算法模板即可解决各种算法问题。
 
-后面会分专题讲解各种数据结构、基本的算法模板、和一些高级算法模板，每一个专题都有一些经典练习题，完成所有练习的题后，你对数据结构和算法会有新的收获和体会。
+后面会分专题讲解各种数据结构、基本的算法模板和一些高级算法模板，每一个专题都有一些经典练习题，完成所有练习的题后，你对数据结构和算法会有新的收获和体会。
 
 先介绍两个算法题，试试感觉~
 
-示例 1
+### 示例 1
 
 [strStr](https://leetcode-cn.com/problems/implement-strstr/)
 
@@ -36,7 +35,7 @@ class Solution {
 - 循环时，i 不需要到 len-1
 - 如果找到目标字符串，len(needle)==j
 
-示例 2
+### 示例 2
 
 [subsets](https://leetcode-cn.com/problems/subsets/)
 
@@ -104,5 +103,5 @@ class Solution {
 
 ## 练习
 
-- [ ] [strStr](https://leetcode-cn.com/problems/implement-strstr/)
-- [ ] [subsets](https://leetcode-cn.com/problems/subsets/)
+- [ ] [No.0028(implement-strstr)](https://leetcode-cn.com/problems/implement-strstr/)
+- [ ] [No.0078(subsets)](https://leetcode-cn.com/problems/subsets/)
