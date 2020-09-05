@@ -1,17 +1,17 @@
-package Stack;
+package stack_queue;
 
 import java.util.Iterator;
 
 /**
  * 顺序栈的动态扩容
- * Author: PeiJiaNi
- * @param <T>  顺序栈元素类型
+ * 
+ * @param <T> 顺序栈元素类型
  */
 
 public class DynamicStackBaseArray<T> implements Iterable<T> {
-    private T[] items;   // 数组
-    private int count;   // 栈中的元素个数
-    private int length;  // 栈空间大小
+    private T[] items; // 数组
+    private int count; // 栈中的元素个数
+    private int length; // 栈空间大小
 
     /**
      * 初始化栈
@@ -63,7 +63,7 @@ public class DynamicStackBaseArray<T> implements Iterable<T> {
     /**
      * 栈空间动态增加或减小
      *
-     * @param size
+     * @param size 扩容的大小
      */
     private void resize(int size) {
         T[] newItems = (T[]) new Object[size];
@@ -73,7 +73,7 @@ public class DynamicStackBaseArray<T> implements Iterable<T> {
         this.items = newItems;
     }
 
-    //返回栈中最近添加的元素而不删除它
+    // 返回栈中最近添加的元素而不删除它
     public T peek() {
         return items[count - 1];
     }
@@ -90,7 +90,7 @@ public class DynamicStackBaseArray<T> implements Iterable<T> {
     /**
      * 返回栈中元素个数
      *
-     * @return
+     * @return count
      */
     public int size() {
         return count;
@@ -129,8 +129,5 @@ public class DynamicStackBaseArray<T> implements Iterable<T> {
         while (iterator.hasNext()) {
             System.out.println(iterator.next());
         }
-
     }
-
 }
-
