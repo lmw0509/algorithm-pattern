@@ -3,7 +3,7 @@ package com.lmw.leetcode._0450;
 import com.lmw.leetcode.structure.TreeNode;
 
 /**
- * 思路：官方递归
+ * 思路：官方递归解法
  */
 class Solution {
 
