@@ -1,13 +1,15 @@
-package Stack;
+package stack_queue;
 
 /**
  * 顺序栈(基于数组实现)
- * Author: PeiJiaNi
  */
 public class StackBaseArray {
-    private int[] items;    // 数组
-    private int count;      // 栈中元素个数
-    private int length;   // 栈空间大小
+    // 数组
+    private int[] items;
+    // 栈中元素个数
+    private int count;
+    // 栈空间大小
+    private int length;
 
     public StackBaseArray(int capactiy) {
         this.items = new int[capactiy];
@@ -17,11 +19,12 @@ public class StackBaseArray {
 
     /**
      * 入栈操作 时间复杂度O(1)
+     * 
      * @param item 要入栈的元素
-     * @return     入栈成功则返回true,否则返回false
+     * @return 入栈成功则返回true,否则返回false
      */
-    public boolean  push(int item) {
-        if(count == length) {
+    public boolean push(int item) {
+        if (count == length) {
             System.out.println("当前栈已满，无法进行入栈操作");
             return false;
         }
@@ -32,10 +35,11 @@ public class StackBaseArray {
 
     /**
      * 出栈操作 时间复杂度O(1)
+     * 
      * @return 如果栈内不为空，则返回栈顶元素，否则返回-1
      */
-    public int  pop(){
-        if(count == 0) {
+    public int pop() {
+        if (count == 0) {
             System.out.println("当前栈已空，无法进行出栈操作");
             return -1;
         }
@@ -44,7 +48,7 @@ public class StackBaseArray {
         return items[--count];
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         StackBaseArray stack = new StackBaseArray(6);
         stack.push(1);
         stack.push(2);
@@ -56,9 +60,5 @@ public class StackBaseArray {
         System.out.println(stack.pop());
         System.out.println(stack.pop());
         System.out.println(stack.pop());
-
     }
-
-
 }
-
