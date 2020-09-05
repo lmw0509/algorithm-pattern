@@ -2,9 +2,6 @@ package array;
 
 /**
  * 1、数组的插入、删除、按照下标随机访问操作 2、数组中的数据是int类型的
- *
- * @author l00483373
- * @since 2020-09-03
  */
 public class Array {
     // 定义整型数据data保存数据
