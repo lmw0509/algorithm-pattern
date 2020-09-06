@@ -1,4 +1,4 @@
-## Description
+### Description
 
 Implement [strStr()](http://www.cplusplus.com/reference/cstring/strstr/).
 
@@ -26,25 +26,44 @@ For the purpose of this problem, we will return 0 when `needle` is an empty stri
 
 Tags:** Two Pointers, String
 
-
-## 思路
-
-题意是从主串中找到子串的索引，如果找不到则返回-1，当子串长度大于主串，直接返回-1，然后我们只需要遍历比较即可。
-
-## 代码实现
+### 代码实现一：两次遍历
 
 ```java
 class Solution {
-    public int strStr(String haystack, String needle) {
-        int l1 = haystack.length(), l2 = needle.length();
-        if (l1 < l2) return -1;
-        for (int i = 0; ; i++) {
-            if (i + l2 > l1) return -1;
-            for (int j = 0; ; j++) {
-                if (j == l2) return i;
-                if (haystack.charAt(i + j) != needle.charAt(j)) break;
+    public int strStr(final String haystack, final String needle) {
+        final int l1 = haystack.length();
+        final int l2 = needle.length();
+        if (l1 < l2) {
+            return -1;
+        }
+        for (int i = 0; i < l1 - l2 + 1; i++) {
+            for (int j = 0; j < l2; j++) {
+                if (haystack.charAt(i + j) != needle.charAt(j)) {
+                    break;
+                }
+                if (j == l2 - 1) {
+                    return i;
+                }
             }
         }
+        return -1;
+    }
+}
+```
+
+### 代码实现二：一次遍历+substring
+
+```java
+class Solution2 {
+    public int strStr(final String haystack, final String needle) {
+        final int l1 = haystack.length();
+        final int l2 = needle.length();
+        for (int start = 0; start < l1 - l2 + 1; ++start) {
+            if (haystack.substring(start, start + l2).equals(needle)) {
+                return start;
+            }
+        }
+        return -1;
     }
 }
 ```
