@@ -63,25 +63,6 @@ class Solution {
 }
 ```
 
-[number-of-1-bits](https://leetcode-cn.com/problems/number-of-1-bits/)
-
-> 编写一个函数，输入是一个无符号整数，返回其二进制表达式中数字位数为 ‘1’  的个数（也被称为[汉明重量](https://baike.baidu.com/item/%E6%B1%89%E6%98%8E%E9%87%8D%E9%87%8F)）。
-
-```java
-public class Solution {
-    // you need to treat n as an unsigned value
-    public int hammingWeight(int n) {
-        int sum = 0;
-        while (n != 0) {
-            sum++;
-            // n & (n - 1)运算，将n的二进制数最后一位1变为0，循环直到n为0
-            n = n & (n - 1);
-        }
-        return sum;
-    }
-}
-```
-
 [counting-bits](https://leetcode-cn.com/problems/counting-bits/)
 
 > 给定一个非负整数  **num**。对于  0 ≤ i ≤ num  范围中的每个数字  i ，计算其二进制数中的 1 的数目并将它们作为数组返回。
@@ -141,22 +122,6 @@ public class Solution {
             ans += (n & 1) << bitsize;
         }
         return ans;
-    }
-}
-```
-
-[bitwise-and-of-numbers-range](https://leetcode-cn.com/problems/bitwise-and-of-numbers-range/)
-
-> 给定范围 [m, n]，其中 0 <= m <= n <= 2147483647，返回此范围内所有数字的按位与（包含 m, n 两端点）。
-
-详解见[https://leetcode-cn.com/problems/bitwise-and-of-numbers-range/solution/shu-zi-fan-wei-an-wei-yu-by-leetcode/](https://leetcode-cn.com/problems/bitwise-and-of-numbers-range/solution/shu-zi-fan-wei-an-wei-yu-by-leetcode/)
-```java
-class Solution {
-    public int rangeBitwiseAnd(int m, int n) {
-        while (m < n) {
-            n &= n - 1;
-        }
-        return m & n;
     }
 }
 ```
