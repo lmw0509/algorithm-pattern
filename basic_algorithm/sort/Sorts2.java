@@ -1,14 +1,11 @@
-package com.study.sort;
+package sort;
 
 import java.util.Arrays;
 
 /**
  * 冒泡，选择，插入，快速，归并
- *
- * @author ldb
- * @date 2019-10-08 16:09
  */
-public class Sorts {
+public class Sorts2 {
 
     /**
      * 冒泡排序

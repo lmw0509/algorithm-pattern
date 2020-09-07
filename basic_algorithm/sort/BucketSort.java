@@ -1,10 +1,5 @@
-/**
- * @Description:桶排序算法
- * @Author: Hoda
- * @Date: Create in 2019-06-01
- * @Modified By:
- * @Modified Date:
- */
+package sort;
+
 public class BucketSort {
 
     /**

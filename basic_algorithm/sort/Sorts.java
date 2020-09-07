@@ -1,17 +1,17 @@
-package sorts;
+package sort;
 
 import java.util.Arrays;
 
 /**
  * 冒泡排序、插入排序、选择排序
- * <p>
- * Author: Zheng
  */
 public class Sorts {
 
     // 冒泡排序，a是数组，n表示数组大小
     public static void bubbleSort(int[] a, int n) {
-        if (n <= 1) return;
+        if (n <= 1) {
+            return;
+        }
 
         for (int i = 0; i < n; ++i) {
             // 提前退出标志位
@@ -25,14 +25,16 @@ public class Sorts {
                     flag = true;
                 }
             }
-            if (!flag) break;  // 没有数据交换，提前退出
+            if (!flag) {
+                break;  // 没有数据交换，提前退出
+            }
         }
     }
 
     /**
      * 冒泡排序改进:在每一轮排序后记录最后一次元素交换的位置,作为下次比较的边界,
      * 对于边界外的元素在下次循环中无需比较.
-     */ 
+     */
     public static void bubbleSort2(int[] a, int n) {
         if (n <= 1) return;
 
