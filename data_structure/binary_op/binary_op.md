@@ -36,43 +36,6 @@ diff=(n&(n-1))^n
 
 ### 常见题型
 
-[single-number](https://leetcode-cn.com/problems/single-number/)
-
-> 给定一个**非空**整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。
-
-```java
-class Solution {
-    public int singleNumber(int[] nums) {
-        int result = 0;
-        for (int num : nums) {
-            // 两个相同的数做异或操作等于0，0与任何数异或，数值不变。
-            result = result ^ num;
-        }
-        return result;
-    }
-}
-```
-
-[single-number-ii](https://leetcode-cn.com/problems/single-number-ii/)
-
-> 给定一个**非空**整数数组，除了某个元素只出现一次以外，其余每个元素均出现了三次。找出那个只出现了一次的元素。
-
-![](http://wardseptember.club/20200622211535.png)
-
-```java
-class Solution {
-    public int singleNumber(int[] nums) {
-        int seenOnce = 0, seenTwice = 0;
-        for (int num : nums) {
-            // 只出现一次的数按照下面的规则运算后，seenOnce就等于该数。出现三次的数运算后，seenOnce 和 seenTwice都为0
-            seenOnce = ~seenTwice & (seenOnce ^ num);
-            seenTwice = ~seenOnce & (seenTwice ^ num);
-        }
-        return seenOnce;
-    }
-}
-```
-
 [single-number-iii](https://leetcode-cn.com/problems/single-number-iii/)
 
 > 给定一个整数数组  `nums`，其中恰好有两个元素只出现一次，其余所有元素均出现两次。 找出只出现一次的那两个元素。
@@ -200,9 +163,10 @@ class Solution {
 
 ## 练习
 
-- [ ] [single-number](https://leetcode-cn.com/problems/single-number/)
-- [ ] [single-number-ii](https://leetcode-cn.com/problems/single-number-ii/)
-- [ ] [single-number-iii](https://leetcode-cn.com/problems/single-number-iii/)
-- [ ] [number-of-1-bits](https://leetcode-cn.com/problems/number-of-1-bits/)
-- [ ] [counting-bits](https://leetcode-cn.com/problems/counting-bits/)
-- [ ] [reverse-bits](https://leetcode-cn.com/problems/reverse-bits/)
+- [ ] [No.0136(single-number)](https://leetcode-cn.com/problems/single-number/)
+- [ ] [No.0137(single-number-ii)](https://leetcode-cn.com/problems/single-number-ii/)
+- [ ] [No.0260(single-number-iii)](https://leetcode-cn.com/problems/single-number-iii/)
+- [ ] [No.0191(number-of-1-bits)](https://leetcode-cn.com/problems/number-of-1-bits/)
+- [ ] [No.0338(counting-bits)](https://leetcode-cn.com/problems/counting-bits/)
+- [ ] [No.0190(reverse-bits)](https://leetcode-cn.com/problems/reverse-bits/)
+- [ ] [No.0201(bitwise-and-of-numbers-range)](https://leetcode-cn.com/problems/bitwise-and-of-numbers-range/)
