@@ -39,6 +39,6 @@ class Solution {
         TreeNode.print(TreeNode.createTestData("[1,3,null,null,2]"));
         final TreeNode treeNode = TreeNode.createTestData("[1,3,null,null,2]");
         solution.recoverTree(treeNode);
-        System.out.println(treeNode);
+        TreeNode.print(treeNode);
     }
 }
