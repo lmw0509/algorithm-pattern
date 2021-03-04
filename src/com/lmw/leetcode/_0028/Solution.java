@@ -1,18 +1,23 @@
 package com.lmw.leetcode._0028;
 
+/**
+ * 暴力解法
+ *
+ * @since 2021-03-04
+ */
 class Solution {
     public int strStr(final String haystack, final String needle) {
-        final int l1 = haystack.length();
-        final int l2 = needle.length();
-        if (l1 < l2) {
+        final int m = haystack.length();
+        final int n = needle.length();
+        if (m < n) {
             return -1;
         }
-        for (int i = 0; i < l1 - l2 + 1; i++) {
-            for (int j = 0; j < l2; j++) {
+        for (int i = 0; i < m - n + 1; i++) {
+            for (int j = 0; j < n; j++) {
                 if (haystack.charAt(i + j) != needle.charAt(j)) {
                     break;
                 }
-                if (j == l2 - 1) {
+                if (j == n - 1) {
                     return i;
                 }
             }
