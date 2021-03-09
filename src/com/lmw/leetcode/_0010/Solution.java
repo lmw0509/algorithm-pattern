@@ -12,7 +12,8 @@ public class Solution {
     Map<String, Boolean> memo = new HashMap<>();
 
     public boolean isMatch(final String s, final String p) {
-        return true;
+        // 指针 i，j 从索引 0 开始移动
+        return dp(s, 0, p, 0);
     }
 
     // 计算 p[j] 是否匹配 s[i]
