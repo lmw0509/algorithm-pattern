@@ -8,7 +8,7 @@ import java.util.Queue;
  *
  * @since 2021-03-08
  */
-public class MyStack {
+public class Stack {
     Queue<Integer> queue1;
 
     Queue<Integer> queue2;
@@ -16,7 +16,7 @@ public class MyStack {
     /**
      * Initialize your data structure here.
      */
-    public MyStack() {
+    public Stack() {
         queue1 = new LinkedList<Integer>();
         queue2 = new LinkedList<Integer>();
     }
